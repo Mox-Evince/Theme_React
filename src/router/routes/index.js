@@ -16,7 +16,6 @@ import AuthenticationRoutes from './Authentication'
 // ** Layouts
 import BlankLayout from '@layouts/BlankLayout'
 import VerticalLayout from '@src/layouts/VerticalLayout'
-import HorizontalLayout from '@src/layouts/HorizontalLayout'
 import LayoutWrapper from '@src/@core/layouts/components/layout-wrapper'
 
 // ** Route Components
@@ -28,8 +27,7 @@ import { isObjEmpty } from '@utils'
 
 const getLayout = {
   blank: <BlankLayout />,
-  vertical: <VerticalLayout />,
-  horizontal: <HorizontalLayout />
+  vertical: <VerticalLayout />
 }
 
 // ** Document title

@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 
 // ** Store & Actions
 import { useSelector, useDispatch } from 'react-redux'
-import { handleMenuCollapsed, handleContentWidth, handleMenuHidden } from '@store/layout'
+import { handleMenuCollapsed } from '@store/layout'
 
 // ** Third Party Components
 import classnames from 'classnames'
@@ -18,16 +18,13 @@ import themeConfig from '@configs/themeConfig'
 
 // ** Custom Components
 import BuyNow from './components/BuyNow'
-import Customizer from '@components/customizer'
 import ScrollToTop from '@components/scrolltop'
 import FooterComponent from './components/footer'
 import NavbarComponent from './components/navbar'
 import SidebarComponent from './components/menu/vertical-menu'
 
 // ** Custom Hooks
-import { useRTL } from '@hooks/useRTL'
 import { useSkin } from '@hooks/useSkin'
-import { useLayout } from '@hooks/useLayout'
 import { useNavbarType } from '@hooks/useNavbarType'
 import { useFooterType } from '@hooks/useFooterType'
 import { useNavbarColor } from '@hooks/useNavbarColor'
@@ -41,12 +38,10 @@ const VerticalLayout = props => {
   const { menu, navbar, footer, children, menuData } = props
 
   // ** Hooks
-  const [isRtl, setIsRtl] = useRTL()
   const { skin, setSkin } = useSkin()
-  const { navbarType, setNavbarType } = useNavbarType()
-  const { footerType, setFooterType } = useFooterType()
-  const { navbarColor, setNavbarColor } = useNavbarColor()
-  const { layout, setLayout, setLastLayout } = useLayout()
+  const { navbarType } = useNavbarType()
+  const { footerType } = useFooterType()
+  const { navbarColor } = useNavbarColor()
 
   // ** States
   const [isMounted, setIsMounted] = useState(false)
@@ -70,12 +65,6 @@ const VerticalLayout = props => {
 
   // ** Toggles Menu Collapsed
   const setMenuCollapsed = val => dispatch(handleMenuCollapsed(val))
-
-  // ** Handles Content Width
-  const setContentWidth = val => dispatch(handleContentWidth(val))
-
-  // ** Handles Content Width
-  const setIsHidden = val => dispatch(handleMenuHidden(val))
 
   //** This function will detect the Route Change and will hide the menu on menu item click
   useEffect(() => {
@@ -184,30 +173,6 @@ const VerticalLayout = props => {
       ></div>
       {/* Vertical Nav Menu Overlay */}
 
-      {themeConfig.layout.customizer === true ? (
-        <Customizer
-          skin={skin}
-          isRtl={isRtl}
-          layout={layout}
-          setSkin={setSkin}
-          setIsRtl={setIsRtl}
-          isHidden={isHidden}
-          setLayout={setLayout}
-          footerType={footerType}
-          navbarType={navbarType}
-          setIsHidden={setIsHidden}
-          themeConfig={themeConfig}
-          navbarColor={navbarColor}
-          contentWidth={contentWidth}
-          setFooterType={setFooterType}
-          setNavbarType={setNavbarType}
-          setLastLayout={setLastLayout}
-          menuCollapsed={menuCollapsed}
-          setNavbarColor={setNavbarColor}
-          setContentWidth={setContentWidth}
-          setMenuCollapsed={setMenuCollapsed}
-        />
-      ) : null}
       <footer
         className={classnames(`footer footer-light ${footerClasses[footerType] || 'footer-static'}`, {
           'd-none': footerType === 'hidden'
