@@ -9,11 +9,6 @@ const InvoiceEdit = lazy(() => import('../../views/apps/invoice/edit'))
 const InvoicePrint = lazy(() => import('../../views/apps/invoice/print'))
 const InvoicePreview = lazy(() => import('../../views/apps/invoice/preview'))
 
-const EcommerceShop = lazy(() => import('../../views/apps/ecommerce/shop'))
-const EcommerceDetail = lazy(() => import('../../views/apps/ecommerce/detail'))
-const EcommerceWishlist = lazy(() => import('../../views/apps/ecommerce/wishlist'))
-const EcommerceCheckout = lazy(() => import('../../views/apps/ecommerce/checkout'))
-
 const UserList = lazy(() => import('../../views/apps/user/list'))
 const UserView = lazy(() => import('../../views/apps/user/view'))
 
@@ -51,41 +46,6 @@ const AppRoutes = [
     element: <InvoicePrint />,
     meta: {
       layout: 'blank'
-    }
-  },
-  {
-    element: <EcommerceShop />,
-    path: '/apps/ecommerce/shop',
-    meta: {
-      className: 'ecommerce-application'
-    }
-  },
-  {
-    element: <EcommerceWishlist />,
-    path: '/apps/ecommerce/wishlist',
-    meta: {
-      className: 'ecommerce-application'
-    }
-  },
-  {
-    path: '/apps/ecommerce/product-detail',
-    element: <Navigate to='/apps/ecommerce/product-detail/apple-i-phone-11-64-gb-black-26' />,
-    meta: {
-      className: 'ecommerce-application'
-    }
-  },
-  {
-    path: '/apps/ecommerce/product-detail/:product',
-    element: <EcommerceDetail />,
-    meta: {
-      className: 'ecommerce-application'
-    }
-  },
-  {
-    path: '/apps/ecommerce/checkout',
-    element: <EcommerceCheckout />,
-    meta: {
-      className: 'ecommerce-application'
     }
   },
   {
