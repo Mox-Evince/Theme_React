@@ -155,7 +155,7 @@ mock.onPost('/apps/permissions/update-permission').reply(config => {
 // DELETE: Deletes Permissions
 mock.onDelete('/apps/permissions/delete').reply(config => {
   // Get  id from URL
-  let permissionID = config.id
+  let permissionID = config?.id
 
   // Convert Id to number
   permissionID = Number(permissionID)
