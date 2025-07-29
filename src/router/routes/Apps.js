@@ -2,9 +2,6 @@
 import { lazy } from 'react'
 import { Navigate } from 'react-router-dom'
 
-const Todo = lazy(() => import('../../views/apps/todo'))
-const Kanban = lazy(() => import('../../views/apps/kanban'))
-const Calendar = lazy(() => import('../../views/apps/calendar'))
 
 const InvoiceAdd = lazy(() => import('../../views/apps/invoice/add'))
 const InvoiceList = lazy(() => import('../../views/apps/invoice/list'))
@@ -25,43 +22,6 @@ const Permissions = lazy(() => import('../../views/apps/roles-permissions/permis
 
 const AppRoutes = [
   
-  
-  {
-    element: <Todo />,
-    path: '/apps/todo',
-    meta: {
-      appLayout: true,
-      className: 'todo-application'
-    }
-  },
-  {
-    element: <Todo />,
-    path: '/apps/todo/:filter',
-    meta: {
-      appLayout: true,
-      className: 'todo-application'
-    }
-  },
-  {
-    element: <Todo />,
-    path: '/apps/todo/tag/:tag',
-    meta: {
-      appLayout: true,
-      className: 'todo-application'
-    }
-  },
-  {
-    element: <Calendar />,
-    path: '/apps/calendar'
-  },
-  {
-    element: <Kanban />,
-    path: '/apps/kanban',
-    meta: {
-      appLayout: true,
-      className: 'kanban-application'
-    }
-  },
   {
     element: <InvoiceList />,
     path: '/apps/invoice/list'

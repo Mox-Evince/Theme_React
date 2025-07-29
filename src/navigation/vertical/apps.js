@@ -5,25 +5,6 @@ export default [
   {
     header: 'Apps & Pages'
   },
-  
-  {
-    id: 'todo',
-    title: 'Todo',
-    icon: <CheckSquare size={20} />,
-    navLink: '/apps/todo'
-  },
-  {
-    id: 'calendar',
-    title: 'Calendar',
-    icon: <Calendar size={20} />,
-    navLink: '/apps/calendar'
-  },
-  {
-    id: 'kanban',
-    title: 'Kanban',
-    icon: <CheckSquare size={20} />,
-    navLink: '/apps/kanban'
-  },
   {
     id: 'invoiceApp',
     title: 'Invoice',
