@@ -2,9 +2,7 @@
 import { lazy } from 'react'
 import { Navigate } from 'react-router-dom'
 
-const Chat = lazy(() => import('../../views/apps/chat'))
 const Todo = lazy(() => import('../../views/apps/todo'))
-const Email = lazy(() => import('../../views/apps/email'))
 const Kanban = lazy(() => import('../../views/apps/kanban'))
 const Calendar = lazy(() => import('../../views/apps/calendar'))
 
@@ -26,42 +24,8 @@ const Roles = lazy(() => import('../../views/apps/roles-permissions/roles'))
 const Permissions = lazy(() => import('../../views/apps/roles-permissions/permissions'))
 
 const AppRoutes = [
-  {
-    element: <Email />,
-    path: '/apps/email',
-    meta: {
-      appLayout: true,
-      className: 'email-application'
-    }
-  },
-  {
-    element: <Email />,
-    path: '/apps/email/:folder',
-    meta: {
-      appLayout: true,
-      className: 'email-application'
-    }
-  },
-  {
-    element: <Email />,
-    path: '/apps/email/label/:label',
-    meta: {
-      appLayout: true,
-      className: 'email-application'
-    }
-  },
-  {
-    element: <Email />,
-    path: '/apps/email/:filter'
-  },
-  {
-    path: '/apps/chat',
-    element: <Chat />,
-    meta: {
-      appLayout: true,
-      className: 'chat-application'
-    }
-  },
+  
+  
   {
     element: <Todo />,
     path: '/apps/todo',
