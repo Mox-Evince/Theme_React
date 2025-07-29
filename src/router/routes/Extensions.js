@@ -8,7 +8,7 @@ const I18nComponent = lazy(() => import('../../views/extensions/i18n'))
 const Pagination = lazy(() => import('../../views/extensions/pagination'))
 const SweetAlert = lazy(() => import('../../views/extensions/sweet-alert'))
 const DragAndDrop = lazy(() => import('../../views/extensions/drag-and-drop'))
-const AccessControl = lazy(() => import('../../views/extensions/access-control'))
+// const AccessControl = lazy(() => import('../../views/extensions/access-control'))
 const ReactHotToast = lazy(() => import('../../views/extensions/react-hot-toasts'))
 const CopyToClipboard = lazy(() => import('../../views/extensions/copy-to-clipboard'))
 const ImportComponent = lazy(() => import('../../views/extensions/import-export/Import'))
@@ -44,14 +44,7 @@ const ExtensionsRoutes = [
     element: <Swiper />,
     path: '/extensions/swiper'
   },
-  {
-    path: '/access-control',
-    element: <AccessControl />,
-    meta: {
-      action: 'read',
-      resource: 'ACL'
-    }
-  },
+
   {
     element: <Ratings />,
     path: '/extensions/ratings'
