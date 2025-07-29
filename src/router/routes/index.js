@@ -3,7 +3,7 @@ import { Fragment } from 'react'
 
 // ** Routes Imports
 import AppRoutes from './Apps'
-import FormRoutes from './Forms'
+
 import PagesRoutes from './Pages'
 import TablesRoutes from './Tables'
 
@@ -45,7 +45,7 @@ const Routes = [
   ...UiElementRoutes,
   ...ExtensionsRoutes,
   ...PageLayoutsRoutes,
-  ...FormRoutes,
+
   ...TablesRoutes,
 
 ]
