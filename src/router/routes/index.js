@@ -5,7 +5,7 @@ import { Fragment } from 'react'
 import AppRoutes from './Apps'
 
 import PagesRoutes from './Pages'
-import TablesRoutes from './Tables'
+
 
 import DashboardRoutes from './Dashboards'
 import ExtensionsRoutes from './Extensions'
@@ -41,7 +41,7 @@ const Routes = [
   ...AppRoutes,
   ...PagesRoutes,
   ...ExtensionsRoutes,
-  ...TablesRoutes
+
 ]
 
 const getRouteMeta = route => {

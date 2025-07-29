@@ -316,11 +316,5 @@ export default [
       }
     ]
   },
-  {
-    id: 'modal-examples',
-    title: 'Modal Examples',
-    icon: <Square size={12} />,
-    permissions: ['admin', 'editor'],
-    navLink: '/pages/modal-examples'
-  }
+  
 ]

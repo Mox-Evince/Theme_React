@@ -11,7 +11,7 @@ const BlogList = lazy(() => import('../../views/pages/blog/list'))
 const BlogEdit = lazy(() => import('../../views/pages/blog/edit'))
 const BlogDetails = lazy(() => import('../../views/pages/blog/details'))
 const ComingSoon = lazy(() => import('../../views/pages/misc/ComingSoon'))
-const ModalExamples = lazy(() => import('../../views/pages/modal-examples'))
+
 const Maintenance = lazy(() => import('../../views/pages/misc/Maintenance'))
 const AccountSettings = lazy(() => import('../../views/pages/account-settings'))
 const NotAuthorized = lazy(() => import('../../views/pages/misc/NotAuthorized'))
@@ -52,10 +52,7 @@ const PagesRoutes = [
     path: '/pages/api-key',
     element: <ApiKey />
   },
-  {
-    path: '/pages/modal-examples',
-    element: <ModalExamples />
-  },
+ 
   {
     path: '/pages/blog/list',
     element: <BlogList />
