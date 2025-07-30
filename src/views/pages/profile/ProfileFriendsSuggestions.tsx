@@ -8,12 +8,19 @@ import { UserPlus } from 'react-feather'
 // ** Reactstrap Imports
 import { Card, CardBody, Button } from 'reactstrap'
 
-const ProfileFriendsSuggestions = ({ data }) => {
+// ** Types
+import { FriendSuggestion } from './types'
+
+interface ProfileFriendsSuggestionsProps {
+  data: FriendSuggestion[]
+}
+
+const ProfileFriendsSuggestions: React.FC<ProfileFriendsSuggestionsProps> = ({ data }) => {
   const renderSuggestion = () => {
     return data.map((suggestion, index) => {
       return (
         <div
-          key={index}
+          key={suggestion.name}
           className={classnames('d-flex justify-content-start align-items-center', {
             'mt-2': index === 0,
             'mt-1': index !== 0
@@ -22,7 +29,7 @@ const ProfileFriendsSuggestions = ({ data }) => {
           <Avatar className='me-75' img={suggestion.avatar} imgHeight='40' imgWidth='40' />
           <div className='profile-user-info'>
             <h6 className='mb-0'>{suggestion.name}</h6>
-            <small className='text-muted'>{suggestion.mutualFriend}</small>
+            <small className='text-muted'>{suggestion.mutualFriends} mutual friends</small>
           </div>
           <div className='ms-auto'>
             <Button className='btn-icon' color='primary' size='sm'>

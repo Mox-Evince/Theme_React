@@ -10,7 +10,25 @@ import Avatar from '@components/avatar'
 // ** Reactstrap Imports
 import { Card, CardBody, CardText, Progress, Input, Label, UncontrolledTooltip } from 'reactstrap'
 
-const ProfilePolls = ({ data }) => {
+// ** Types
+import { Poll } from './types'
+
+interface VotedUser {
+  username: string
+  userImg: string
+}
+
+interface PollOption {
+  name: string
+  result: string
+  votedUser: VotedUser[]
+}
+
+interface ProfilePollsProps {
+  data: PollOption[] | Poll[]
+}
+
+const ProfilePolls: React.FC<ProfilePollsProps> = ({ data }) => {
   const renderOptions = () => {
     return data.map((option, index) => {
       return (
@@ -18,13 +36,13 @@ const ProfilePolls = ({ data }) => {
           <div className='d-flex justify-content-between'>
             <div className='form-check'>
               <Input type='radio' name='polls' id={`radio-${option.name.toLowerCase()}`} />
-              <Label className='form-check-label' for={`radio-${option.name.toLowerCase()}`}>
+              <Label className='form-check-label' htmlFor={`radio-${option.name.toLowerCase()}`}>
                 {option.name}
               </Label>
             </div>
             <div className='text-end'>{option.result}</div>
           </div>
-          <Progress className='my-50' value={option.result.replace('%', ' ').trim()} />
+          <Progress className='my-50' value={parseInt(option.result.replace('%', ' ').trim())} />
           <div
             className={classnames('avatar-group', {
               'mt-1': index > 0,

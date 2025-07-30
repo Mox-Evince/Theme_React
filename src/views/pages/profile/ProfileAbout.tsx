@@ -1,7 +1,14 @@
 // ** Reactstrap Imports
 import { Card, CardBody, CardText } from 'reactstrap'
 
-const ProfileAbout = ({ data }) => {
+// ** Types
+import { UserAbout } from './types'
+
+interface ProfileAboutProps {
+  data: UserAbout
+}
+
+const ProfileAbout: React.FC<ProfileAboutProps> = ({ data }) => {
   return (
     <Card>
       <CardBody>
@@ -20,8 +27,12 @@ const ProfileAbout = ({ data }) => {
           <CardText>{data.email}</CardText>
         </div>
         <div className='mt-2'>
-          <h5 className='mb-75'>Website:</h5>
-          <CardText>{data.website}</CardText>
+          <h5 className='mb-75'>Work:</h5>
+          <CardText>{data.work}</CardText>
+        </div>
+        <div className='mt-2'>
+          <h5 className='mb-75'>Education:</h5>
+          <CardText>{data.education}</CardText>
         </div>
       </CardBody>
     </Card>

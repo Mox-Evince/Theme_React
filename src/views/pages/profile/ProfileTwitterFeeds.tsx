@@ -8,22 +8,33 @@ import { CheckCircle, Star } from 'react-feather'
 // ** Reactstrap Imports
 import { Card, CardBody, CardText } from 'reactstrap'
 
-const ProfileTwitterFeeds = ({ data }) => {
+// ** Types
+import { TwitterFeed } from './types'
+
+interface ProfileTwitterFeedsProps {
+  data: TwitterFeed[]
+}
+
+interface ExtendedTwitterFeed extends TwitterFeed {
+  favorite?: boolean
+}
+
+const ProfileTwitterFeeds: React.FC<ProfileTwitterFeedsProps> = ({ data }) => {
   const renderFeeds = () => {
-    return data.map((feed, index) => {
+    return data.map((feed: ExtendedTwitterFeed, index: number) => {
       return (
         <div
           className={classnames('profile-twitter-feed', {
             'mt-1': index === 0,
             'mt-2': index !== 0
           })}
-          key={index}
+          key={feed.id}
         >
           <div className='d-flex justify-content-start align-items-center mb-1'>
             <Avatar className='me-1' img={feed.imgUrl} imgHeight='40' imgWidth='40' />
             <div className='profile-user-info'>
               <h6 className='mb-0'>{feed.title}</h6>
-              <a href='/' onClick={e => e.preventDefault()}>
+              <a href='/' onClick={(e: React.MouseEvent<HTMLAnchorElement>) => e.preventDefault()}>
                 <small className='text-muted'>@{feed.id}</small>
                 <CheckCircle size={14} />
               </a>
@@ -37,9 +48,9 @@ const ProfileTwitterFeeds = ({ data }) => {
               />
             </div>
           </div>
-          <CardText className='mb-50'>{feed.desc}</CardText>
-          <a href='/' onClick={e => e.preventDefault()}>
-            <small>{feed.tags}</small>
+          <CardText className='mb-50'>{feed.description}</CardText>
+          <a href='/' onClick={(e: React.MouseEvent<HTMLAnchorElement>) => e.preventDefault()}>
+            <small>{feed.tags.join(', ')}</small>
           </a>
         </div>
       )

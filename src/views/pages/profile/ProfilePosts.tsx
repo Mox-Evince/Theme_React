@@ -9,9 +9,40 @@ import classnames from 'classnames'
 import { Heart, MessageSquare, Share2 } from 'react-feather'
 
 // ** Reactstrap Imports
-import { Card, CardBody, CardText, Row, Col, UncontrolledTooltip, Input, Label, Button } from 'reactstrap'
 
-const ProfilePosts = ({ data }) => {
+// ** Types
+import { Post } from './types'
+import { Card, CardBody, CardText, Row, Col, UncontrolledTooltip, Label, Input, Button } from 'reactstrap'
+
+interface LikedUser {
+  username: string
+  avatar: string
+}
+
+interface Comment {
+  username: string
+  avatar: string
+  commentsLikes?: number
+  youLiked?: boolean
+  comment: string
+}
+
+interface ExtendedPost extends Post {
+  postText?: string
+  postImg?: string
+  postVid?: string
+  youLiked?: boolean
+  likedUsers: LikedUser[]
+  likedCount: number
+  detailedComments: Comment[]
+  share: number
+}
+
+interface ProfilePostsProps {
+  data: ExtendedPost[] | Post[]
+}
+
+const ProfilePosts: React.FC<ProfilePostsProps> = ({ data }) => {
   const renderPosts = () => {
     return data.map(post => {
       return (
@@ -31,6 +62,7 @@ const ProfilePosts = ({ data }) => {
               <iframe
                 src='https://www.youtube.com/embed/6stlCkUDG_s'
                 className='w-100 rounded height-250 mb-50 border-0'
+                title='Embedded video'
               ></iframe>
             ) : null}
             <Row className='d-flex justify-content-start align-items-center flex-wrap pb-50 post-actions'>
@@ -66,17 +98,17 @@ const ProfilePosts = ({ data }) => {
                       )
                     })}
                   </div>
-                  <a href='/' className='text-muted text-nowrap ms-50' onClick={e => e.preventDefault()}>
+                  <a href='/' className='text-muted text-nowrap ms-50' onClick={(e: React.MouseEvent<HTMLAnchorElement>) => e.preventDefault()}>
                     +{post.likedCount} more
                   </a>
                 </div>
               </Col>
               <Col className='d-flex justify-content-between justify-content-sm-end align-items-center mb-2' sm='6'>
-                <a href='/' className='text-nowrap' onClick={e => e.preventDefault()}>
+                <a href='/' className='text-nowrap' onClick={(e: React.MouseEvent<HTMLAnchorElement>) => e.preventDefault()}>
                   <MessageSquare size={18} className='text-body me-50'></MessageSquare>
                   <span className='text-muted me-1'>{post.comments}</span>
                 </a>
-                <a href='/' className='text-nowrap share-post' onClick={e => e.preventDefault()}>
+                <a href='/' className='text-nowrap share-post' onClick={(e: React.MouseEvent<HTMLAnchorElement>) => e.preventDefault()}>
                   <Share2 size={18} className='text-body mx-50'></Share2>
                   <span className='text-muted me-1'>{post.share}</span>
                 </a>
@@ -88,7 +120,7 @@ const ProfilePosts = ({ data }) => {
                 <div className='profile-user-info w-100'>
                   <div className='d-flex align-items-center justify-content-between'>
                     <h6 className='mb-0'>{comment.username}</h6>
-                    <a href='/' onClick={e => e.preventDefault()}>
+                    <a href='/' onClick={(e: React.MouseEvent<HTMLAnchorElement>) => e.preventDefault()}>
                       <Heart
                         size={18}
                         className={classnames('text-body', {
@@ -102,20 +134,28 @@ const ProfilePosts = ({ data }) => {
                 </div>
               </div>
             ))}
-            <fieldset className='form-label-group mb-50'>
-              <Label className='form-check-label' for={`add-comment-${post.username}`}>
-                Add Comment
-              </Label>
-              <Input id={`add-comment-${post.username}`} type='textarea' rows='3' placeholder='Add Comment' />
-            </fieldset>
-            <Button color='primary' size='sm'>
-              Post Comment
-            </Button>
           </CardBody>
         </Card>
       )
     })
   }
-  return renderPosts()
+
+  return (
+    <Fragment>
+      {renderPosts()}
+      <Card>
+        <CardBody>
+          <div className='d-flex align-items-center mb-1'>
+            <Avatar img='/images/portrait/small/avatar-s-6.jpg' className='me-1' size='50' />
+            <Label className='form-label w-100 mb-0' for='post-message'>
+              <Input type='textarea' id='post-message' rows={3} placeholder='Share what you are thinking about...' />
+            </Label>
+          </div>
+          <Button color='primary'>Post</Button>
+        </CardBody>
+      </Card>
+    </Fragment>
+  )
 }
+
 export default ProfilePosts

@@ -9,7 +9,6 @@ import UILoader from '@components/ui-loader'
 import Breadcrumbs from '@components/breadcrumbs'
 
 // ** Reactstrap Imports
-import { Row, Col, Button } from 'reactstrap'
 
 // ** Demo Components
 import ProfilePoll from './ProfilePolls'
@@ -21,13 +20,18 @@ import ProfileLatestPhotos from './ProfileLatestPhotos'
 import ProfileSuggestedPages from './ProfileSuggestedPages'
 import ProfileFriendsSuggestions from './ProfileFriendsSuggestions'
 
+// ** Types
+import { ProfileData } from './types'
+
 // ** Styles
 import '@styles/react/pages/page-profile.scss'
+import { Button, Row } from 'reactstrap'
+import { Col } from 'reactstrap'
 
 const Profile = () => {
   // ** States
-  const [data, setData] = useState(null)
-  const [block, setBlock] = useState(false)
+  const [data, setData] = useState<ProfileData | null>(null)
+  const [block, setBlock] = useState<boolean>(false)
 
   const handleBlock = () => {
     setBlock(true)
@@ -37,8 +41,9 @@ const Profile = () => {
   }
 
   useEffect(() => {
-    axios.get('/profile/data').then(response => setData(response.data))
+    axios.get<ProfileData>('/profile/data').then(response => setData(response.data))
   }, [])
+
   return (
     <Fragment>
       <Breadcrumbs title='Profile' data={[{ title: 'Pages' }, { title: 'Profile' }]} />

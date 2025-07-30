@@ -3333,10 +3333,10 @@ react@^18.2.0:
   dependencies:
     loose-envify "^1.1.0"
 
-reactstrap@^9.1.5:
-  version "9.1.5"
-  resolved "https://registry.npmjs.org/reactstrap/-/reactstrap-9.1.5.tgz"
-  integrity sha512-w4pnRW/z0piLElgSdypp07mSJVOQIN1tE3DQdsfmpvvUHEzYsjfJHSJkIL26I38m/ACCNXfNnyFSsq0c6U/snQ==
+reactstrap@^9.2.3:
+  version "9.2.3"
+  resolved "https://registry.npmjs.org/reactstrap/-/reactstrap-9.2.3.tgz"
+  integrity sha512-1nXy7FIBIoOgXr3AIHOpgzcZXdj6rZE5YvNSPd1hYgwv8X64m6TAJsU0ExlieJdlRXhaRfTYRSZoTWa127b0gw==
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@popperjs/core" "^2.6.0"

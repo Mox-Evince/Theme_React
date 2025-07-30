@@ -8,9 +8,20 @@ import Avatar from '@components/avatar'
 // ** Reactstrap Imports
 import { Card, CardBody } from 'reactstrap'
 
-const ProfileSuggestedPages = ({ data }) => {
+// ** Types
+import { SuggestedPage } from './types'
+
+interface ProfileSuggestedPagesProps {
+  data: SuggestedPage[]
+}
+
+interface ExtendedSuggestedPage extends SuggestedPage {
+  favorite?: boolean
+}
+
+const ProfileSuggestedPages: React.FC<ProfileSuggestedPagesProps> = ({ data }) => {
   const renderSuggestions = () => {
-    return data.map((suggestion, index) => {
+    return data.map((suggestion: ExtendedSuggestedPage, index: number) => {
       return (
         <div
           className={classnames('d-flex justify-content-start align-items-center', {
